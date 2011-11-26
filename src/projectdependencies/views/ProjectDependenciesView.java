@@ -41,6 +41,7 @@ public class ProjectDependenciesView extends ViewPart
 		makeActions();
 
 		contributeToActionBars();
+		refreshMessage(provider.isShowReferenced());
 	}
 
 	private void contributeToActionBars()
@@ -77,7 +78,7 @@ public class ProjectDependenciesView extends ViewPart
 		};
 
 		toggleDirection.setText("Project Uses/Used by");
-		toggleDirection.setToolTipText("Project Uses/Used by");
+		toggleDirection.setToolTipText( toggleDirection.getText() );
 		toggleDirection.setChecked( provider.isShowReferenced() );
 		toggleDirection.setImageDescriptor( Activator.getImageDescriptor("icons/showchild_mode.gif") );
 	}
@@ -90,8 +91,7 @@ public class ProjectDependenciesView extends ViewPart
 
 	private void refreshMessage(boolean uses)
 	{
-		String message = "Project " + (uses?"uses":"used by");
-		getViewSite().getActionBars().getStatusLineManager().setMessage(message);
-		viewer.getControl().setToolTipText(message);
+		String message = "Project " + (uses?"Uses":"Used By");
+		setPartName(message);
 	}
 }
