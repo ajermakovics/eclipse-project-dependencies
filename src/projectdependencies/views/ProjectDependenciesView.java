@@ -27,7 +27,6 @@ public class ProjectDependenciesView extends ViewPart
 
 	private TreeViewer viewer;
 	private Action toggleDirection;
-
 	private ViewContentProvider provider;
 	
 	public ProjectDependenciesView()
@@ -79,9 +78,7 @@ public class ProjectDependenciesView extends ViewPart
 				provider.setShowReferenced(toggleDirection.isChecked());
 				viewer.refresh();
 				
-				boolean uses = provider.isShowReferenced();
-
-				refreshMessage(uses);
+				refreshMessage(provider.isShowReferenced());
 			}
 		};
 
