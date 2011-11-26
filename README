@@ -2,3 +2,15 @@ Eclipse Project Dependencies
 
 Eclipse Plug-in to show a hierarchy of project dependencies.
 Allows switching between project uses and is used by modes.
+
+To build manually using Eclipse (needs Plug-In Development Tools):
+1. Import project into Eclipse
+2. Export as "Deployable plug-ins and fragments"
+3. Copy the exported jar to eclipse/dropins folder and restart
+
+License:
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+Copyright (c) 2011 Andrejs Jermakovics
