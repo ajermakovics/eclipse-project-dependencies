@@ -12,6 +12,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
@@ -19,7 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.part.ViewPart;
 
-import projectdependencies.Activator;
+import projectdependencies.ProjectDependenciesActivator;
 
 public class ProjectDependenciesView extends ViewPart
 {
@@ -85,7 +86,9 @@ public class ProjectDependenciesView extends ViewPart
 		toggleDirection.setText("Project Uses/Used by");
 		toggleDirection.setToolTipText( toggleDirection.getText() );
 		toggleDirection.setChecked( provider.isShowReferenced() );
-		toggleDirection.setImageDescriptor( Activator.getImageDescriptor("icons/showchild_mode.gif") );
+
+		ImageDescriptor imageDescriptor = ProjectDependenciesActivator.getImageDescriptor("icons/showchild_mode.gif");
+		toggleDirection.setImageDescriptor( imageDescriptor );
 	}
 
 	@Override
