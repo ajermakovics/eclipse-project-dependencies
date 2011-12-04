@@ -9,11 +9,14 @@
 package projectdependencies.views;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
+
+import projectdependencies.views.ViewContentProviderJdt.DepInfo;
 
 class ViewLabelProvider extends LabelProvider
 {
@@ -34,7 +37,15 @@ class ViewLabelProvider extends LabelProvider
 		{
 			return ((IProject) obj).getName();
 		}
-
+		else if( obj instanceof IJavaProject )
+		{
+			return ((IJavaProject) obj).getProject().getName();
+		}
+		else if( obj instanceof DepInfo )
+		{
+			DepInfo info = (DepInfo) obj;
+			return  info.to.getProject().getName() + (info.isUsed?"":"   -   (unused)");
+		}
 		return obj.toString();
 	}
 
@@ -43,9 +54,17 @@ class ViewLabelProvider extends LabelProvider
 	{
 		String imageKey = ISharedImages.IMG_OBJ_FOLDER;
 
-		if (obj instanceof IProject)
+		if (obj instanceof IProject )
 		{
 			return labelProvider.getImage(obj);
+		}
+		else if( obj instanceof IJavaProject )
+		{
+			return labelProvider.getImage(((IJavaProject) obj).getProject());
+		}
+		else if( obj instanceof DepInfo )
+		{
+			return labelProvider.getImage(((DepInfo) obj).to.getJavaProject());
 		}
 
 		return PlatformUI.getWorkbench().getSharedImages().getImage(imageKey);

@@ -20,6 +20,7 @@ class ViewContentProvider implements IStructuredContentProvider,
 		ITreeContentProvider
 {
 	private boolean showReferenced = true;
+	private boolean showTransitive;
 
 	ViewContentProvider()
 	{
@@ -99,5 +100,15 @@ class ViewContentProvider implements IStructuredContentProvider,
 	public boolean isShowReferenced()
 	{
 		return this.showReferenced;
+	}
+
+	public void setShowTransitive(boolean showTransitiveParam)
+	{
+		this.showTransitive = showTransitiveParam;
+	}
+
+	public boolean isShowTransitive()
+	{
+		return showTransitive;
 	}
 }
